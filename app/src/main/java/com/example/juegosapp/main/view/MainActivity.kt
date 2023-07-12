@@ -40,15 +40,14 @@ class MainActivity : AppCompatActivity(),BlankFragment.ListaButtonClickListener 
         val usergameDao = database.userGameDao()
         val frasesRepository = UserGameRepository(usergameDao)
         val frasesViewModelFactory = UserGameViewModelFactory(frasesRepository)
-        userGameViewModel =
-            ViewModelProvider(this, frasesViewModelFactory).get(UserGameViewModel::class.java)
+        userGameViewModel = ViewModelProvider(this, frasesViewModelFactory).get(UserGameViewModel::class.java)
 
         userGameViewModel.allDatos.observe(this, Observer { datosList ->
             // Aquí cargamos la variable global data con lta lista de allDatos
             this.data = datosList
         })
-        var user = UserGame(null, "vercer", "Fernando COntreras", 37)
-        userGameViewModel.insert(user)
+       // var user = UserGame(null, "vercer", "Fernando COntreras", 37)
+       // userGameViewModel.insert(user)
         // userGameViewModel.deleteAll()
 
         supportFragmentManager.commit {
