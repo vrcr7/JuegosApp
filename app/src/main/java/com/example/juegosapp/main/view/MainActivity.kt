@@ -90,17 +90,18 @@ class MainActivity : AppCompatActivity(),BlankFragment.ListaButtonClickListener 
 
     // Función para el botón insertar
     override fun insertar() {
-        val username = findViewById<EditText>(R.id.username).text.toString()
-        val nameEditText = findViewById<EditText>(R.id.name)
-        val surnameEditText = findViewById<EditText>(R.id.surname)
-        val ageEditText = findViewById<EditText>(R.id.age)
-        username.trim().replaceFirstChar { it.uppercase() }.replace("\\s".toRegex(), "")
-        val nombre = nameEditText.text.toString().trim().replaceFirstChar { it.uppercase() }.replace("\\s".toRegex(), "")
-        val apellido = surnameEditText.text.toString().trim().replaceFirstChar { it.uppercase() }.replace("\\s".toRegex(), "")
-        val age: Int? = ageEditText.text.toString().trim().toIntOrNull()
+
 
 
         try {
+            val username = findViewById<EditText>(R.id.username).text.toString()
+            val nameEditText = findViewById<EditText>(R.id.name)
+            val surnameEditText = findViewById<EditText>(R.id.surname)
+            val ageEditText = findViewById<EditText>(R.id.age)
+            username.trim().replaceFirstChar { it.uppercase() }.replace("\\s".toRegex(), "")
+            val nombre = nameEditText.text.toString().trim().replaceFirstChar { it.uppercase() }.replace("\\s".toRegex(), "")
+            val apellido = surnameEditText.text.toString().trim().replaceFirstChar { it.uppercase() }.replace("\\s".toRegex(), "")
+            val age: Int? = ageEditText.text.toString().trim().toIntOrNull()
             if (username.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || age == null) {
                 // Al menos uno de los campos está vacío
                 Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()

@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.juegosapp.R
 
@@ -30,12 +31,15 @@ class ListaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         // Inflar el layout del fragmento
         val view = inflater.inflate(R.layout.fragment_lista, container, false)
         // Obtener referencia al RecyclerView desde el layout
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
         // Crear instancia del adaptador DatosListAdapter y asignarlo al RecyclerView
         // Pasamos la lista de datos obtenida desde la actividad principal (MainActivity)
+        recyclerView.layoutManager = GridLayoutManager(this.requireContext(),3)
         val adapter = DatosListAdapter((activity as MainActivity).data)
         recyclerView.adapter = adapter
 
