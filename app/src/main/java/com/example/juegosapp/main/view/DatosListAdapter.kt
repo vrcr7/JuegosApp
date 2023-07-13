@@ -41,13 +41,6 @@ class DatosListAdapter(private var datos: List<UserGame>) :
         val view = LayoutInflater.from(parent.context).inflate(R.layout.article_item, parent, false)
 
         return DatosViewHolder(view)
-/*
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.article_item, parent, false)
-        val layoutParams = view.layoutParams as GridLayoutManager.LayoutParams
-        layoutParams.width = parent.width / 3 // Ancho de cada columna
-        view.layoutParams = layoutParams
-
-        return DatosViewHolder(view)*/
     }
 
     // Vincula los datos del elemento en la posición dada con la vista

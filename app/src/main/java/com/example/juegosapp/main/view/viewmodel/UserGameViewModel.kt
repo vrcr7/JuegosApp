@@ -18,10 +18,12 @@ class UserGameViewModel (private val repository: UserGameRepository) : ViewModel
     fun insert(frases: UserGame) = viewModelScope.launch {
         repository.insert(frases)
     }
-
+    // Ellimina todos los datos de la db
+    //vaciar la lista de usuarios registrados
     fun deleteAll() = viewModelScope.launch {
         repository.deleteAll()
     }
+    //Elimina un usuario, un registro a traves de la id
     fun eliminarUno(id: Int) = viewModelScope.launch {
         repository.deleteUno(id)
     }

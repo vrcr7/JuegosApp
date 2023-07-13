@@ -46,23 +46,19 @@ class MainActivity : AppCompatActivity(),BlankFragment.ListaButtonClickListener 
             // Aquí cargamos la variable global data con lta lista de allDatos
             this.data = datosList
         })
-       // var user = UserGame(null, "vercer", "Fernando COntreras", 37)
-       // userGameViewModel.insert(user)
-        // userGameViewModel.deleteAll()
 
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add<BlankFragment>(R.id.fragmentContainer)
         }
     }
+    //funcion para cambia de vista al listado (reciclerview)
     override fun onListaButtonClick() {
         try {
             // Verificar si la propiedad ids está inicializada
             if (!data.isEmpty()) {
-                // Acceder a la propiedad ids
                 val listaFragment = ListaFragment()
                 val bundle = Bundle()
-                //   bundle.putString("total", total.toString())
                 listaFragment.arguments = bundle
                 supportFragmentManager.commit {
                     replace(R.id.fragmentContainer,listaFragment)
@@ -79,6 +75,7 @@ class MainActivity : AppCompatActivity(),BlankFragment.ListaButtonClickListener 
             e.printStackTrace()
         }
     }
+    //funcion para la accion para el boton vaciar la lista de usuarios
      fun eliminar(){
          userGameViewModel.deleteAll()
          data = emptyList()
@@ -88,16 +85,15 @@ class MainActivity : AppCompatActivity(),BlankFragment.ListaButtonClickListener 
              .commit()
      }
 
-    // Función para el botón insertar
+    // Función para el botón insertar un usuario
     override fun insertar() {
-
-
-
         try {
+            //asignacion
             val username = findViewById<EditText>(R.id.username).text.toString()
             val nameEditText = findViewById<EditText>(R.id.name)
             val surnameEditText = findViewById<EditText>(R.id.surname)
             val ageEditText = findViewById<EditText>(R.id.age)
+            //validaciones
             username.trim().replaceFirstChar { it.uppercase() }.replace("\\s".toRegex(), "")
             val nombre = nameEditText.text.toString().trim().replaceFirstChar { it.uppercase() }.replace("\\s".toRegex(), "")
             val apellido = surnameEditText.text.toString().trim().replaceFirstChar { it.uppercase() }.replace("\\s".toRegex(), "")
@@ -119,7 +115,8 @@ class MainActivity : AppCompatActivity(),BlankFragment.ListaButtonClickListener 
             e.printStackTrace()
         }
     }
-
+    //funcion eliminar para los botones eliminar por cada uno de los
+    //usuarios cargados en el reciclerview
     fun eliminarUno(idEliminar: String) {
         val id = idEliminar.toIntOrNull()
         if (id != null) {
@@ -135,7 +132,6 @@ class MainActivity : AppCompatActivity(),BlankFragment.ListaButtonClickListener 
             Toast.makeText(this, "ID no válido", Toast.LENGTH_SHORT).show()
         }
     }
-
 
 
 }
